@@ -28,3 +28,6 @@ LICENSE         text
 *.pdf           binary
 
 notebooks/**    linguist-vendored
+
+# https://about.gitlab.com/blog/2015/02/10/gitlab-reduced-merge-conflicts-by-90-percent-with-changelog-placeholders/#update
+CHANGELOG.md    merge=union
