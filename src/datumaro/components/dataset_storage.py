@@ -463,8 +463,8 @@ class DatasetStorage(IDataset):
     def get_annotated_items(self) -> int:
         return self._storage.get_annotated_items()
 
-    def get_annotations(self) -> int:
-        return self._storage.get_annotations()
+    def get_annotations_count(self) -> int:
+        return self._storage.get_annotations_count()
 
     def get_datasetitem_by_path(self, path: str) -> Optional[DatasetItem]:
         return self._storage.get_datasetitem_by_path(path)
@@ -675,8 +675,8 @@ class StreamDatasetStorage(DatasetStorage):
     def get_annotated_items(self) -> int:
         return super().get_annotated_items()
 
-    def get_annotations(self) -> int:
-        return super().get_annotations()
+    def get_annotations_count(self) -> int:
+        return super().get_annotations_count()
 
     def get_datasetitem_by_path(self, path: str) -> Optional[DatasetItem]:
         raise NotAvailableError("Get dataset item by path is not allowed in streaming.")

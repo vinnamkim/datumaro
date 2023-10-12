@@ -2,9 +2,10 @@
 #
 # SPDX-License-Identifier: MIT
 
+from collections import defaultdict
 from copy import copy
 from enum import Enum, auto
-from typing import Any, Iterator, Optional, Tuple, Type, Union
+from typing import Any, Dict, Iterator, Optional, Tuple, Type, Union
 
 from datumaro.components.annotation import AnnotationType
 from datumaro.components.dataset_base import CategoriesInfo, DatasetInfo, DatasetItem, IDataset
@@ -89,12 +90,8 @@ class DatasetItemStorage:
             if getattr(s.media, "path", None) == path:
                 return s
 
-    def get_annotations(self):
-        annotations_by_type = {t.name: {"count": 0} for t in AnnotationType}
-        for item in self._traversal_order.values():
-            for ann in item.annotations:
-                annotations_by_type[ann.type.name]["count"] += 1
-        return sum(t["count"] for t in annotations_by_type.values())
+    def get_annotations_count(self) -> Dict[str, int]:
+        return sum(len(item.annotations) for item in self)
 
     def __copy__(self):
         copied = DatasetItemStorage()
