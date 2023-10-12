@@ -16,6 +16,7 @@ from glob import glob
 from tempfile import TemporaryDirectory
 from typing import Any, Collection, List, Optional, Union
 
+import memory_profiler
 import pytest
 from typing_extensions import Literal
 
